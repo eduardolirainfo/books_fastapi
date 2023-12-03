@@ -162,15 +162,15 @@ async def create_book(new_book: dict = Body(...)):
 
 
 @app.put("/api/v1/books/update_book")
-async def update_book(update_book: dict = Body(...)):
+async def update_book_route(update_data: dict = Body(...)):
     """Put Request to update a book"""
     result = None
-    update = db.search(busca.title.matches(update_book["title"], flags=re.IGNORECASE))
+    update = db.search(busca.title.matches(update_data["title"], flags=re.IGNORECASE))
     if update:
-        result = db.update(update_book, busca.title == update_book["title"])
+        result = db.update(update_data, busca.title == update_data["title"])
     else:
         return {"error": "book not found"}
 
     if result:
-        return update_book
+        return update_data
     return {"error": "error to update book"}
