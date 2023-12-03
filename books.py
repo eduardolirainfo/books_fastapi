@@ -164,21 +164,19 @@ async def create_book(new_book: dict = Body(...)):
 @app.put("/api/v1/books/update_book")
 async def update_book_route(update_data: dict = Body(...)):
     """Put Request to update a book"""
+    filtro = where("title").matches(update_data["title"], flags=re.IGNORECASE)
     result = None
-    update = db.search(
-        where("title").matches(update_data["title"], flags=re.IGNORECASE)
-    )
-    if update:
-        result = db.update(
-            update_data,
-            where("title").matches(update_data["title"], flags=re.IGNORECASE),
-        )
+    existing_books = db.search(filtro)
+    db.upsert(update_data, filtro)
+    if existing_books:
+        result = {"success": "book updated"}
     else:
-        return {"error": "book not found"}
+        result = {"success": "book created"}
 
     if result:
-        return update_data
-    return {"error": "error to update book"}
+        return result
+
+    return {"error": "Error updating the book"}
 
 
 @app.delete("/api/v1/books/delete_book/{book_title}")

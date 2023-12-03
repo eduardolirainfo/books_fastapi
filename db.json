@@ -31,7 +31,7 @@
             "title": "The Mysterious Island"
         },
         "15": {
-            "author": "Robert Louis Stevenson",
+            "author": "Teste 123 45",
             "category": "historical",
             "title": "Treasure Island"
         },
@@ -39,6 +39,21 @@
             "author": "Homer",
             "category": "historical",
             "title": "The Odyssey"
+        },
+        "17": {
+            "author": "Eduardo",
+            "category": "historical",
+            "title": "Treasure Island 123"
+        },
+        "18": {
+            "author": "Eduardo",
+            "category": "historical",
+            "title": "Teste"
+        },
+        "19": {
+            "author": "Eduardo",
+            "category": "historical",
+            "title": "Teste xxx"
         },
         "2": {
             "author": "H. G. Wells",
