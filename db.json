@@ -1,0 +1,89 @@
+{
+    "_default": {
+        "1": {
+            "author": "Conan Doyle",
+            "category": "mystery",
+            "title": "The Hound of the Baskervilles"
+        },
+        "10": {
+            "author": "Lev Nikolayevich Tolstoy",
+            "category": "biography",
+            "title": "Childhood"
+        },
+        "11": {
+            "author": "Mark Twain",
+            "category": "biography",
+            "title": "The Adventures of Tom Sawyer"
+        },
+        "12": {
+            "author": "Mark Twain",
+            "category": "historical",
+            "title": "The Prince and the Pauper"
+        },
+        "13": {
+            "author": "Mark Twain",
+            "category": "historical",
+            "title": "The Adventures of Huckleberry Finn"
+        },
+        "14": {
+            "author": "Jules Verne",
+            "category": "science fiction",
+            "title": "The Mysterious Island"
+        },
+        "15": {
+            "author": "Robert Louis Stevenson",
+            "category": "historical",
+            "title": "Treasure Island"
+        },
+        "16": {
+            "author": "Homer",
+            "category": "historical",
+            "title": "The Odyssey"
+        },
+        "17": {
+            "author": "Eduardo Lira",
+            "category": "Drama",
+            "title": "Teste 123"
+        },
+        "2": {
+            "author": "H. G. Wells",
+            "category": "science fiction",
+            "title": "The War of the Worlds"
+        },
+        "3": {
+            "author": "Edward Bulwer-Lytton",
+            "category": "historical",
+            "title": "Last Days of Pompeii"
+        },
+        "4": {
+            "author": "Alexandre Dumas",
+            "category": "historical",
+            "title": "The Count of Monte Cristo"
+        },
+        "5": {
+            "author": "H. G. Wells",
+            "category": "science fiction",
+            "title": "The Time Machine"
+        },
+        "6": {
+            "author": "Jules Verne",
+            "category": "science fiction",
+            "title": "A Journey into the Center of the Earth"
+        },
+        "7": {
+            "author": "Henry Kuttner",
+            "category": "fantasy",
+            "title": "The Dark World"
+        },
+        "8": {
+            "author": "Kenneth Grahame",
+            "category": "fantasy",
+            "title": "The Wind in the Willows"
+        },
+        "9": {
+            "author": "Mark Twain",
+            "category": "historical",
+            "title": "Life On The Mississippi"
+        }
+    }
+}

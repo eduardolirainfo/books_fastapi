@@ -10,7 +10,7 @@ from tinydb import TinyDB, Query
 app = FastAPI()
 
 
-db = TinyDB("db.json")
+db = TinyDB("db.json", indent=4, sort_keys=True)
 
 # db.insert_multiple(
 #     [
@@ -44,7 +44,11 @@ db = TinyDB("db.json")
 #             "author": "Jules Verne",
 #             "category": "science fiction",
 #         },
-#         {"title": "The Dark World", "author": "Henry Kuttner", "category": "fantasy"},
+#         {
+#              "title": "The Dark World",
+#              "author": "Henry Kuttner",
+#              "category": "fantasy"
+#        },
 #         {
 #             "title": "The Wind in the Willows",
 #             "author": "Kenneth Grahame",
@@ -85,7 +89,11 @@ db = TinyDB("db.json")
 #             "author": "Robert Louis Stevenson",
 #             "category": "historical",
 #         },
-#         {"title": "The Odyssey", "author": "Homer", "category": "historical"},
+#         {
+#             "title": "The Odyssey",
+#             "author": "Homer",
+#             "category": "historical"
+#        },
 #     ]
 # )
 
@@ -101,9 +109,10 @@ async def read_all_books():
 @app.get("/api/v1/books/{book_title}")
 async def read_book_title(book_title: str):
     """return book by title"""
-    # remover espaços em branco do inicio e fim
     book_title = book_title.strip()
-    result = db.search(busca.title.matches(book_title, flags=re.IGNORECASE))
+    result = db.search(
+        busca.title.matches(f".*{re.escape(book_title)}.*", flags=re.IGNORECASE)
+    )
     if result:
         return result
 
@@ -114,7 +123,9 @@ async def read_book_title(book_title: str):
 async def read_category_by_query(book_category: str):
     """return book by category"""
     book_category = book_category.strip()
-    result = db.search(busca.category.matches(book_category, flags=re.IGNORECASE))
+    result = db.search(
+        busca.category.matches(f".*{re.escape(book_category)}.*", flags=re.IGNORECASE)
+    )
     if result:
         return result
     return {"error": "category not found"}
@@ -136,13 +147,30 @@ async def read_author_category_by_query(book_author: str, category: str):
 @app.post("/api/v1/books/create_book")
 async def create_book(new_book: dict = Body(...)):
     """Post Request to create a new book"""
-    body = new_book
-    author = db.search(busca.author.matches(body["author"], flags=re.IGNORECASE))
-    category = db.search(busca.category.matches(body["category"], flags=re.IGNORECASE))
-    if author and category:
-        result = db.search((busca.title.matches(body["title"], flags=re.IGNORECASE)))
-        if result:
-            return {"error": "book already exists"}
-        db.insert(body)
-        return body
+    result = None
+    insert_book = db.search(
+        ~(busca.title.matches(new_book["title"], flags=re.IGNORECASE))
+    )
+    if insert_book:
+        result = db.insert(new_book)
+    else:
+        return {"error": "book already exists"}
+
+    if result:
+        return new_book
     return {"error": "error to create book"}
+
+
+@app.put("/api/v1/books/update_book")
+async def update_book(update_book: dict = Body(...)):
+    """Put Request to update a book"""
+    result = None
+    update = db.search(busca.title.matches(update_book["title"], flags=re.IGNORECASE))
+    if update:
+        result = db.update(update_book, busca.title == update_book["title"])
+    else:
+        return {"error": "book not found"}
+
+    if result:
+        return update_book
+    return {"error": "error to update book"}
