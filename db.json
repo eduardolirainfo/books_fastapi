@@ -40,11 +40,6 @@
             "category": "historical",
             "title": "The Odyssey"
         },
-        "17": {
-            "author": "Eduardo Lira",
-            "category": "Drama",
-            "title": "Teste 123"
-        },
         "2": {
             "author": "H. G. Wells",
             "category": "science fiction",
@@ -79,11 +74,6 @@
             "author": "Kenneth Grahame",
             "category": "fantasy",
             "title": "The Wind in the Willows"
-        },
-        "9": {
-            "author": "Mark Twain",
-            "category": "historical",
-            "title": "Life On The Mississippi"
         }
     }
 }

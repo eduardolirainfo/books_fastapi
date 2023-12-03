@@ -5,7 +5,7 @@ Returns:
 """
 import re
 from fastapi import Body, FastAPI
-from tinydb import TinyDB, Query
+from tinydb import TinyDB, where
 
 app = FastAPI()
 
@@ -97,8 +97,6 @@ db = TinyDB("db.json", indent=4, sort_keys=True)
 #     ]
 # )
 
-busca = Query()
-
 
 @app.get("/api/v1/books")
 async def read_all_books():
@@ -111,7 +109,7 @@ async def read_book_title(book_title: str):
     """return book by title"""
     book_title = book_title.strip()
     result = db.search(
-        busca.title.matches(f".*{re.escape(book_title)}.*", flags=re.IGNORECASE)
+        where("title").matches(f".*{re.escape(book_title)}.*", flags=re.IGNORECASE)
     )
     if result:
         return result
@@ -124,7 +122,9 @@ async def read_category_by_query(book_category: str):
     """return book by category"""
     book_category = book_category.strip()
     result = db.search(
-        busca.category.matches(f".*{re.escape(book_category)}.*", flags=re.IGNORECASE)
+        where("category").matches(
+            f".*{re.escape(book_category)}.*", flags=re.IGNORECASE
+        )
     )
     if result:
         return result
@@ -135,8 +135,8 @@ async def read_category_by_query(book_category: str):
 async def read_author_category_by_query(book_author: str, category: str):
     """return book by author and category"""
     result = db.search(
-        (busca.author.matches(book_author, flags=re.IGNORECASE))
-        & (busca.category.matches(category, flags=re.IGNORECASE))
+        (where("author").matches(book_author, flags=re.IGNORECASE))
+        & (where("category").matches(category, flags=re.IGNORECASE))
     )
 
     if result:
@@ -149,7 +149,7 @@ async def create_book(new_book: dict = Body(...)):
     """Post Request to create a new book"""
     result = None
     insert_book = db.search(
-        ~(busca.title.matches(new_book["title"], flags=re.IGNORECASE))
+        ~(where("title").matches(new_book["title"], flags=re.IGNORECASE))
     )
     if insert_book:
         result = db.insert(new_book)
@@ -165,12 +165,32 @@ async def create_book(new_book: dict = Body(...)):
 async def update_book_route(update_data: dict = Body(...)):
     """Put Request to update a book"""
     result = None
-    update = db.search(busca.title.matches(update_data["title"], flags=re.IGNORECASE))
+    update = db.search(
+        where("title").matches(update_data["title"], flags=re.IGNORECASE)
+    )
     if update:
-        result = db.update(update_data, busca.title == update_data["title"])
+        result = db.update(
+            update_data,
+            where("title").matches(update_data["title"], flags=re.IGNORECASE),
+        )
     else:
         return {"error": "book not found"}
 
     if result:
         return update_data
     return {"error": "error to update book"}
+
+
+@app.delete("/api/v1/books/delete_book/{book_title}")
+async def delete_book_route(book_title: str):
+    """Delete Request to delete a book"""
+    result = None
+    delete = db.search(where("title").matches(book_title, flags=re.IGNORECASE))
+    if delete:
+        result = db.remove(where("title").matches(book_title, flags=re.IGNORECASE))
+    else:
+        return {"error": "book not found"}
+
+    if result:
+        return {"success": "book deleted"}
+    return {"error": "error to delete book"}
