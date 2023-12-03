@@ -192,3 +192,21 @@ async def delete_book_route(book_title: str):
     if result:
         return {"success": "book deleted"}
     return {"error": "error to delete book"}
+
+
+@app.get("/api/v1/books/author/{author}")
+async def read_books_by_author_path(author: str):
+    """return book by author"""
+    result = db.search(where("author").matches(author, flags=re.IGNORECASE))
+    if result:
+        return result
+    return {"error": "author not found"}
+
+
+@app.get("/api/v1/books/category/{category}")
+async def read_books_by_category_path(category: str):
+    """return book by category"""
+    result = db.search(where("category").matches(category, flags=re.IGNORECASE))
+    if result:
+        return result
+    return {"error": "category not found"}
