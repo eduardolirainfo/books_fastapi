@@ -1,4 +1,4 @@
-"""biblioteca de livros
+"""Biblioteca de livros
 
 Returns:
     _type: dict
@@ -7,11 +7,17 @@ import re
 from fastapi import Body, FastAPI
 from tinydb import TinyDB, where
 
-app = FastAPI()
-
+app = FastAPI(
+    title="Books API",
+    description=" API para gerenciar uma biblioteca de livros",
+    version="1.0.0",
+    reload=True,
+)
 
 db = TinyDB("db.json", indent=4, sort_keys=True)
 
+
+# Remova o comentário abaixo para popular a base de dados
 # db.insert_multiple(
 #     [
 #         {
@@ -96,8 +102,6 @@ db = TinyDB("db.json", indent=4, sort_keys=True)
 #        },
 #     ]
 # )
-
-
 @app.get("/api/v1/books")
 async def read_all_books():
     """return all books"""
@@ -128,6 +132,24 @@ async def read_category_by_query(book_category: str):
     )
     if result:
         return result
+    return {"error": "Categoria não encontrada"}
+
+
+@app.get("/api/v1/books/byauthor/")
+async def read_books_by_author_path(author: str):
+    """return book by author"""
+    result = db.search(where("author").matches(author, flags=re.IGNORECASE))
+    if result:
+        return result
+    return {"error": "Autor não encontrado"}
+
+
+@app.get("/api/v1/books/bycategory/")
+async def read_books_by_category_path(category: str):
+    """return book by category"""
+    result = db.search(where("category").matches(category, flags=re.IGNORECASE))
+    if result:
+        return result
     return {"error": "category not found"}
 
 
@@ -148,9 +170,13 @@ async def read_author_category_by_query(book_author: str, category: str):
 async def create_book(new_book: dict = Body(...)):
     """Post Request to create a new book"""
     result = None
-    insert_book = db.search(
-        ~(where("title").matches(new_book["title"], flags=re.IGNORECASE))
-    )
+    if not all(key in new_book for key in ("title", "author", "category")):
+        return {"error": "missing key"}
+    else:
+        insert_book = db.search(
+            ~(where("title").matches(new_book["title"], flags=re.IGNORECASE))
+        )
+
     if insert_book:
         result = db.insert(new_book)
     else:
@@ -192,21 +218,3 @@ async def delete_book_route(book_title: str):
     if result:
         return {"success": "book deleted"}
     return {"error": "error to delete book"}
-
-
-@app.get("/api/v1/books/author/{author}")
-async def read_books_by_author_path(author: str):
-    """return book by author"""
-    result = db.search(where("author").matches(author, flags=re.IGNORECASE))
-    if result:
-        return result
-    return {"error": "author not found"}
-
-
-@app.get("/api/v1/books/category/{category}")
-async def read_books_by_category_path(category: str):
-    """return book by category"""
-    result = db.search(where("category").matches(category, flags=re.IGNORECASE))
-    if result:
-        return result
-    return {"error": "category not found"}

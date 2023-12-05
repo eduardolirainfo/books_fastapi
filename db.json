@@ -1,10 +1,5 @@
 {
     "_default": {
-        "1": {
-            "author": "Conan Doyle",
-            "category": "mystery",
-            "title": "The Hound of the Baskervilles"
-        },
         "10": {
             "author": "Lev Nikolayevich Tolstoy",
             "category": "biography",
@@ -44,16 +39,6 @@
             "author": "Eduardo",
             "category": "historical",
             "title": "Treasure Island 123"
-        },
-        "18": {
-            "author": "Eduardo",
-            "category": "historical",
-            "title": "Teste"
-        },
-        "19": {
-            "author": "Eduardo",
-            "category": "historical",
-            "title": "Teste xxx"
         },
         "2": {
             "author": "H. G. Wells",
