@@ -4,15 +4,11 @@ Returns:
     _type: dict
 """
 import re
-from fastapi import Body, FastAPI
+from fastapi import Body, APIRouter
 from tinydb import TinyDB, where
 
-app = FastAPI(
-    title="Books API",
-    description=" API para gerenciar uma biblioteca de livros",
-    version="1.0.0",
-    reload=True,
-)
+
+router = APIRouter()
 
 db = TinyDB("db.json", indent=4, sort_keys=True)
 
@@ -102,13 +98,13 @@ db = TinyDB("db.json", indent=4, sort_keys=True)
 #        },
 #     ]
 # )
-@app.get("/api/v1/books")
+@router.get("/api/v1/books")
 async def read_all_books():
     """return all books"""
     return db.all()
 
 
-@app.get("/api/v1/books/{book_title}")
+@router.get("/api/v1/books/{book_title}")
 async def read_book_title(book_title: str):
     """return book by title"""
     book_title = book_title.strip()
@@ -121,7 +117,7 @@ async def read_book_title(book_title: str):
     return {"error": "book not found"}
 
 
-@app.get("/api/v1/books/")
+@router.get("/api/v1/books/")
 async def read_category_by_query(book_category: str):
     """return book by category"""
     book_category = book_category.strip()
@@ -135,7 +131,7 @@ async def read_category_by_query(book_category: str):
     return {"error": "Categoria não encontrada"}
 
 
-@app.get("/api/v1/books/byauthor/")
+@router.get("/api/v1/books/byauthor/")
 async def read_books_by_author_path(author: str):
     """return book by author"""
     result = db.search(where("author").matches(author, flags=re.IGNORECASE))
@@ -144,7 +140,7 @@ async def read_books_by_author_path(author: str):
     return {"error": "Autor não encontrado"}
 
 
-@app.get("/api/v1/books/bycategory/")
+@router.get("/api/v1/books/bycategory/")
 async def read_books_by_category_path(category: str):
     """return book by category"""
     result = db.search(where("category").matches(category, flags=re.IGNORECASE))
@@ -153,7 +149,7 @@ async def read_books_by_category_path(category: str):
     return {"error": "category not found"}
 
 
-@app.get("/api/v1/books/{book_author}/")
+@router.get("/api/v1/books/{book_author}/")
 async def read_author_category_by_query(book_author: str, category: str):
     """return book by author and category"""
     result = db.search(
@@ -166,7 +162,7 @@ async def read_author_category_by_query(book_author: str, category: str):
     return {"error": "author or category not found"}
 
 
-@app.post("/api/v1/books/create_book")
+@router.post("/api/v1/books/create_book")
 async def create_book(new_book: dict = Body(...)):
     """Post Request to create a new book"""
     result = None
@@ -187,7 +183,7 @@ async def create_book(new_book: dict = Body(...)):
     return {"error": "error to create book"}
 
 
-@app.put("/api/v1/books/update_book")
+@router.put("/api/v1/books/update_book")
 async def update_book_route(update_data: dict = Body(...)):
     """Put Request to update a book"""
     filtro = where("title").matches(update_data["title"], flags=re.IGNORECASE)
@@ -205,7 +201,7 @@ async def update_book_route(update_data: dict = Body(...)):
     return {"error": "Error updating the book"}
 
 
-@app.delete("/api/v1/books/delete_book/{book_title}")
+@router.delete("/api/v1/books/delete_book/{book_title}")
 async def delete_book_route(book_title: str):
     """Delete Request to delete a book"""
     result = None
