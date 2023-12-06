@@ -17,6 +17,12 @@
             "description": "The Silmarillion is a collection of mythopoeic works by English writer J. R. R. Tolkien, edited and published posthumously by his son, Christopher Tolkien, in 1977, with assistance from Guy Gavriel Kay, who later became a noted fantasy writer.",
             "rating": 4.6,
             "title": "The Silmarillion"
+        },
+        "4": {
+            "author": "Eduardo Lira",
+            "description": "Description teste",
+            "rating": 5,
+            "title": "Teste"
         }
     }
 }

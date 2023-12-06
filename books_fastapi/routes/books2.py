@@ -3,7 +3,7 @@
 Returns:
     _type: dict
 """
-from fastapi import APIRouter
+from fastapi import APIRouter, Body
 from tinydb import TinyDB
 
 router = APIRouter()
@@ -52,7 +52,14 @@ class Book2:
 # db2.insert_multiple([book.__dict__ for book in BOOKS])
 
 
-@router.get("/api/v1/books2")
+@router.get("/")
 async def read_all_books():
     """Return all books."""
+    return db2.all()
+
+
+@router.post("/create-book")
+async def create_book(book_request=Body(...)):
+    """Create a new book."""
+    db2.insert(book_request)
     return db2.all()
