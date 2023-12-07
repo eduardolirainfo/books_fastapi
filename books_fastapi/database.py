@@ -1,0 +1,55 @@
+"""Database module, including the database connection and the database"""
+import os
+from tinydb import TinyDB
+from .models.books2 import Books2
+
+
+def get_database_instance(app_name):
+    """Return the database instance."""
+    db = TinyDB(f"{app_name}.json", sort_keys=True, indent=4)
+    if os.path.isfile(f"{app_name}.json") and os.stat(f"{app_name}.json").st_size == 0:
+        if app_name == "db":
+            books_create = [
+                {
+                    "title": "The Hound of the Baskervilles",
+                    "author": "Conan Doyle",
+                    "category": "mystery",
+                },
+                {
+                    "title": "The War of the Worlds",
+                    "author": "H. G. Wells",
+                    "category": "science fiction",
+                },
+                {
+                    "title": "Last Days of Pompeii",
+                    "author": "Edward Bulwer-Lytton",
+                    "category": "historical",
+                },
+            ]
+            db.insert_multiple(books_create)
+
+        elif app_name == "db2":
+            books_create2 = [
+                Books2(
+                    title="The Hobbit",
+                    author="J. R. R. Tolkien",
+                    description="The Hobbit, or There and Back Again...",
+                    rating=4.5,
+                ),
+                Books2(
+                    title="The Lord of the Rings",
+                    author="J. R. R. Tolkien",
+                    description="The Lord of the Rings is an epic high...",
+                    rating=4.7,
+                ),
+                Books2(
+                    title="The Silmarillion",
+                    author="J. R. R. Tolkien",
+                    description="The Silmarillion is a collection of ...",
+                    rating=4.6,
+                ),
+            ]
+            db.insert_multiple([books2.dict() for books2 in books_create2])
+        else:
+            raise ValueError(f"App name '{app_name}' not recognized")
+    return db

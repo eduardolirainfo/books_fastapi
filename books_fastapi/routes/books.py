@@ -5,99 +5,14 @@ Returns:
 """
 import re
 from fastapi import Body, APIRouter
-from tinydb import TinyDB, where
+from tinydb import where
+from ..database import get_database_instance
 
 
 router = APIRouter()
+db = get_database_instance("db")
 
-db = TinyDB("db.json", indent=4, sort_keys=True)
 
-
-# Remova o comentário abaixo para popular a base de dados
-# db.insert_multiple(
-#     [
-#         {
-#             "title": "The Hound of the Baskervilles",
-#             "author": "Conan Doyle",
-#             "category": "mystery",
-#         },
-#         {
-#             "title": "The War of the Worlds",
-#             "author": "H. G. Wells",
-#             "category": "science fiction",
-#         },
-#         {
-#             "title": "Last Days of Pompeii",
-#             "author": "Edward Bulwer-Lytton",
-#             "category": "historical",
-#         },
-#         {
-#             "title": "The Count of Monte Cristo",
-#             "author": "Alexandre Dumas",
-#             "category": "historical",
-#         },
-#         {
-#             "title": "The Time Machine",
-#             "author": "H. G. Wells",
-#             "category": "science fiction",
-#         },
-#         {
-#             "title": "A Journey into the Center of the Earth",
-#             "author": "Jules Verne",
-#             "category": "science fiction",
-#         },
-#         {
-#              "title": "The Dark World",
-#              "author": "Henry Kuttner",
-#              "category": "fantasy"
-#        },
-#         {
-#             "title": "The Wind in the Willows",
-#             "author": "Kenneth Grahame",
-#             "category": "fantasy",
-#         },
-#         {
-#             "title": "Life On The Mississippi",
-#             "author": "Mark Twain",
-#             "category": "historical",
-#         },
-#         {
-#             "title": "Childhood",
-#             "author": "Lev Nikolayevich Tolstoy",
-#             "category": "biography",
-#         },
-#         {
-#             "title": "The Adventures of Tom Sawyer",
-#             "author": "Mark Twain",
-#             "category": "biography",
-#         },
-#         {
-#             "title": "The Prince and the Pauper",
-#             "author": "Mark Twain",
-#             "category": "historical",
-#         },
-#         {
-#             "title": "The Adventures of Huckleberry Finn",
-#             "author": "Mark Twain",
-#             "category": "historical",
-#         },
-#         {
-#             "title": "The Mysterious Island",
-#             "author": "Jules Verne",
-#             "category": "science fiction",
-#         },
-#         {
-#             "title": "Treasure Island",
-#             "author": "Robert Louis Stevenson",
-#             "category": "historical",
-#         },
-#         {
-#             "title": "The Odyssey",
-#             "author": "Homer",
-#             "category": "historical"
-#        },
-#     ]
-# )
 @router.get("/")
 async def read_all_books():
     """return all books"""
@@ -117,7 +32,7 @@ async def read_book_title(book_title: str):
     return {"error": "book not found"}
 
 
-@router.get("/")
+@router.get("/category/")
 async def read_category_by_query(book_category: str):
     """return book by category"""
     book_category = book_category.strip()

@@ -18,7 +18,8 @@ def initialize_app(
     """Inicializa uma instância do FastAPI."""
     app = FastAPI(title=title, description=description, version=version, reload=reload)
 
-    configure_routes(app)
+    if configure_routes:
+        configure_routes(app)
     return app
 
 

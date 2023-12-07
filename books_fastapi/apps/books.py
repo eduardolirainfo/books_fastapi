@@ -6,6 +6,7 @@ Returns:
 from ..routes import books_router
 from ..main import initialize_app
 
+
 app = initialize_app(
     title="Books API",
     description="API para gerenciar uma biblioteca de livros",

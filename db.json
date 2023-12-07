@@ -1,175 +1,19 @@
 {
     "_default": {
-        "10": {
-            "author": "Lev Nikolayevich Tolstoy",
-            "category": "biography",
-            "title": "Childhood"
-        },
-        "11": {
-            "author": "Mark Twain",
-            "category": "biography",
-            "title": "The Adventures of Tom Sawyer"
-        },
-        "12": {
-            "author": "Mark Twain",
-            "category": "historical",
-            "title": "The Prince and the Pauper"
-        },
-        "13": {
-            "author": "Mark Twain",
-            "category": "historical",
-            "title": "The Adventures of Huckleberry Finn"
-        },
-        "14": {
-            "author": "Jules Verne",
-            "category": "science fiction",
-            "title": "The Mysterious Island"
-        },
-        "15": {
-            "author": "Teste 123 45",
-            "category": "historical",
-            "title": "Treasure Island"
-        },
-        "16": {
-            "author": "Homer",
-            "category": "historical",
-            "title": "The Odyssey"
-        },
-        "17": {
-            "author": "Eduardo",
-            "category": "historical",
-            "title": "Treasure Island 123"
-        },
-        "18": {
-            "author": "J. R. R. Tolkien",
-            "available": 1,
-            "category": "Fantasy",
-            "copies": 1,
-            "cover": "https://images-na.ssl-images-amazon.com/images/I/91bq1c8fcwL.jpg",
-            "description": "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien. It was published on 21 September 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction. The book remains popular and is recognized as a classic in children's literature.",
-            "isbn": "9780006754024",
-            "language": "English",
-            "pages": 310,
-            "publisher": "HarperCollins",
-            "rating": 4.5,
-            "title": "The Hobbit",
-            "website": "https://www.tolkien.co.uk/products/the-hobbit-80th-anniversary-edition-paperback-1",
-            "year": 1937
-        },
-        "19": {
-            "author": "J. R. R. Tolkien",
-            "available": 1,
-            "category": "Fantasy",
-            "copies": 1,
-            "cover": "https://images-na.ssl-images-amazon.com/images/I/91bq1c8fcwL.jpg",
-            "description": "The Lord of the Rings is an epic high fantasy novel by the English author and scholar J. R. R. Tolkien. Set in Middle-earth, the world at some distant time in the past, the story began as a sequel to Tolkien's 1937 children's book The Hobbit, but eventually developed into a much larger work.",
-            "isbn": "9780261103252",
-            "language": "English",
-            "pages": 1216,
-            "publisher": "HarperCollins",
-            "rating": 4.7,
-            "title": "The Lord of the Rings",
-            "website": "https://www.tolkien.co.uk/products/the-lord-of-the-rings-7",
-            "year": 1954
+        "1": {
+            "author": "Conan Doyle",
+            "category": "mystery",
+            "title": "The Hound of the Baskervilles"
         },
         "2": {
             "author": "H. G. Wells",
             "category": "science fiction",
             "title": "The War of the Worlds"
         },
-        "20": {
-            "author": "J. R. R. Tolkien",
-            "available": 1,
-            "category": "Fantasy",
-            "copies": 1,
-            "cover": "https://images-na.ssl-images-amazon.com/images/I/91bq1c8fcwL.jpg",
-            "description": "The Silmarillion is a collection of mythopoeic works by English writer J. R. R. Tolkien, edited and published posthumously by his son, Christopher Tolkien, in 1977, with assistance from Guy Gavriel Kay, who later became a noted fantasy writer.",
-            "isbn": "9780261102736",
-            "language": "English",
-            "pages": 480,
-            "publisher": "HarperCollins",
-            "rating": 4.6,
-            "title": "The Silmarillion",
-            "website": "https://www.tolkien.co.uk/products/the-silmarillion-7",
-            "year": 1977
-        },
-        "21": {
-            "author": "J. R. R. Tolkien",
-            "available": 1,
-            "category": "Fantasy",
-            "copies": 1,
-            "cover": "https://images-na.ssl-images-amazon.com/images/I/91bq1c8fcwL.jpg",
-            "description": "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien. It was published on 21 September 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction. The book remains popular and is recognized as a classic in children's literature.",
-            "isbn": "9780006754024",
-            "language": "English",
-            "pages": 310,
-            "publisher": "HarperCollins",
-            "rating": 4.5,
-            "title": "The Hobbit",
-            "website": "https://www.tolkien.co.uk/products/the-hobbit-80th-anniversary-edition-paperback-1",
-            "year": 1937
-        },
-        "22": {
-            "author": "J. R. R. Tolkien",
-            "available": 1,
-            "category": "Fantasy",
-            "copies": 1,
-            "cover": "https://images-na.ssl-images-amazon.com/images/I/91bq1c8fcwL.jpg",
-            "description": "The Lord of the Rings is an epic high fantasy novel by the English author and scholar J. R. R. Tolkien. Set in Middle-earth, the world at some distant time in the past, the story began as a sequel to Tolkien's 1937 children's book The Hobbit, but eventually developed into a much larger work.",
-            "isbn": "9780261103252",
-            "language": "English",
-            "pages": 1216,
-            "publisher": "HarperCollins",
-            "rating": 4.7,
-            "title": "The Lord of the Rings",
-            "website": "https://www.tolkien.co.uk/products/the-lord-of-the-rings-7",
-            "year": 1954
-        },
-        "23": {
-            "author": "J. R. R. Tolkien",
-            "available": 1,
-            "category": "Fantasy",
-            "copies": 1,
-            "cover": "https://images-na.ssl-images-amazon.com/images/I/91bq1c8fcwL.jpg",
-            "description": "The Silmarillion is a collection of mythopoeic works by English writer J. R. R. Tolkien, edited and published posthumously by his son, Christopher Tolkien, in 1977, with assistance from Guy Gavriel Kay, who later became a noted fantasy writer.",
-            "isbn": "9780261102736",
-            "language": "English",
-            "pages": 480,
-            "publisher": "HarperCollins",
-            "rating": 4.6,
-            "title": "The Silmarillion",
-            "website": "https://www.tolkien.co.uk/products/the-silmarillion-7",
-            "year": 1977
-        },
         "3": {
             "author": "Edward Bulwer-Lytton",
             "category": "historical",
             "title": "Last Days of Pompeii"
-        },
-        "4": {
-            "author": "Alexandre Dumas",
-            "category": "historical",
-            "title": "The Count of Monte Cristo"
-        },
-        "5": {
-            "author": "H. G. Wells",
-            "category": "science fiction",
-            "title": "The Time Machine"
-        },
-        "6": {
-            "author": "Jules Verne",
-            "category": "science fiction",
-            "title": "A Journey into the Center of the Earth"
-        },
-        "7": {
-            "author": "Henry Kuttner",
-            "category": "fantasy",
-            "title": "The Dark World"
-        },
-        "8": {
-            "author": "Kenneth Grahame",
-            "category": "fantasy",
-            "title": "The Wind in the Willows"
         }
     }
 }
