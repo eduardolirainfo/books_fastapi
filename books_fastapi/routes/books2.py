@@ -4,7 +4,7 @@ Returns:
     _type: dict
 """
 from fastapi import APIRouter
-from ..models.books2 import Books2, Books2Request
+from ..models.books2 import Books2Request
 from ..database import get_database_instance
 
 router = APIRouter()
@@ -21,6 +21,7 @@ async def read_all_books():
 @router.post("/create-book")
 async def create_book(book_request: Books2Request):
     """Create a new book."""
-    new_book = Books2(**book_request.dict())
-    db.insert(new_book.__dict__)
-    return db.all()
+
+    new_book = book_request.dict()
+    db.insert(new_book)
+    return new_book

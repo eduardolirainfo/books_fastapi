@@ -24,3 +24,15 @@ class Books2Request(BaseModel):
     author: str = Field(..., min_length=1, max_length=50)
     description: str = Field(..., min_length=1, max_length=100)
     rating: int = Field(..., gt=0, lt=6)
+
+    class Config:
+        """Classe de configuração do Pydantic."""
+
+        json_schema_extra = {
+            "example": {
+                "title": "Livro 1",
+                "author": "Autor 1",
+                "description": "Descrição 1",
+                "rating": 5,
+            }
+        }
