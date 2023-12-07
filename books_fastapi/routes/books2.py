@@ -3,7 +3,7 @@
 Returns:
     _type: dict
 """
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from ..models.books2 import Books2Request
 from ..database import get_database_instance
 
@@ -16,6 +16,16 @@ db = get_database_instance("db2")
 async def read_all_books():
     """Return all books."""
     return db.all()
+
+
+@router.get("/{book_id}")
+async def read_book(book_id: int):
+    """Return a book by id."""
+    item_data = db.get(doc_id=book_id)
+
+    if not item_data:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return item_data
 
 
 @router.post("/create-book")
