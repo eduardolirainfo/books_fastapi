@@ -9,12 +9,14 @@ class Books2:
     author: str
     description: str
     rating: int
+    published_date: int
 
-    def __init__(self, title, author, description, rating):
+    def __init__(self, title, author, description, rating, published_date):
         self.title = title
         self.author = author
         self.description = description
         self.rating = rating
+        self.published_date = published_date
 
 
 class Books2Request(BaseModel):
@@ -24,6 +26,7 @@ class Books2Request(BaseModel):
     author: str = Field(..., min_length=1, max_length=50)
     description: str = Field(..., min_length=1, max_length=100)
     rating: int = Field(..., gt=0, lt=6)
+    published_date: int = Field(..., gt=1999, lt=2023)
 
     class Config:
         """Classe de configuração do Pydantic."""
@@ -34,5 +37,6 @@ class Books2Request(BaseModel):
                 "author": "Autor 1",
                 "description": "Descrição 1",
                 "rating": 5,
+                "published_date": 2021,
             }
         }
