@@ -6,6 +6,7 @@ Returns:
 from fastapi import APIRouter, HTTPException
 from ..models.books2 import Books2Request
 from ..database import get_database_instance
+from tinydb import where
 
 router = APIRouter()
 
@@ -19,13 +20,22 @@ async def read_all_books():
 
 
 @router.get("/{book_id}")
-async def read_book(book_id: int):
+async def read_book_by_id(book_id: int):
     """Return a book by id."""
-    item_data = db.get(doc_id=book_id)
+    book = db.get(doc_id=book_id)
 
-    if not item_data:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return item_data
+    if not book:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return book
+
+
+@router.get("/byrating/")
+async def read_book_by_rating(book_rating: int):
+    """Return a book by rating."""
+    result = db.search(where("rating") == book_rating)
+    if not result:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return result
 
 
 @router.post("/create-book")

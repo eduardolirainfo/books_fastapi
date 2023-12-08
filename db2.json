@@ -3,7 +3,7 @@
         "1": {
             "author": "J. R. R. Tolkien",
             "description": "The Hobbit, or There and Back Again...",
-            "rating": 4.5,
+            "rating": 4,
             "title": "The Hobbit"
         },
         "10": {
@@ -15,19 +15,19 @@
         "2": {
             "author": "J. R. R. Tolkien",
             "description": "The Lord of the Rings is an epic high...",
-            "rating": 4.7,
+            "rating": 4,
             "title": "The Lord of the Rings"
         },
         "3": {
             "author": "J. R. R. Tolkien",
             "description": "The Silmarillion is a collection of ...",
-            "rating": 4.6,
+            "rating": 4,
             "title": "The Silmarillion"
         },
         "4": {
             "author": "Teste123",
             "description": "Teste 123123123",
-            "rating": 4.6,
+            "rating": 4,
             "title": "Teste123123123123"
         },
         "5": {
