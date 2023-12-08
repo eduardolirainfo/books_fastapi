@@ -3,7 +3,7 @@
 Returns:
     _type: dict
 """
-from fastapi import APIRouter
+from fastapi import APIRouter, Path
 from tinydb import where
 from ..models.books2 import Books2Request
 from ..database import get_database_instance
@@ -21,7 +21,7 @@ async def read_all_books():
 
 
 @router.get("/{book_id}")
-async def read_book_by_id(book_id: int):
+async def read_book_by_id(book_id: int = Path(..., gt=0)):
     """Return a book by id."""
     book = db.get(doc_id=book_id)
     if book:

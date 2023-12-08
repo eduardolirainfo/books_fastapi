@@ -55,7 +55,7 @@ def get_database_instance(app_name):
                     published_date=1977,
                 ),
             ]
-            db.insert_multiple([books2.dict() for books2 in books_create2])
+            db.insert_multiple([book.__dict__ for book in books_create2])
         else:
             raise ValueError(f"App name '{app_name}' not recognized")
     return db

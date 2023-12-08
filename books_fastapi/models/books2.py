@@ -26,7 +26,7 @@ class Books2Request(BaseModel):
     author: str = Field(..., min_length=1, max_length=50)
     description: str = Field(..., min_length=1, max_length=100)
     rating: int = Field(..., gt=0, lt=6)
-    published_date: int = Field(..., gt=1999, lt=2023)
+    published_date: int = Field(..., gt=1400, lt=2023)
 
     class Config:
         """Classe de configuração do Pydantic."""

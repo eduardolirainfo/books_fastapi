@@ -3,16 +3,19 @@
         "1": {
             "author": "Conan Doyle",
             "category": "mystery",
+            "published_date": 1902,
             "title": "The Hound of the Baskervilles"
         },
         "2": {
             "author": "H. G. Wells",
             "category": "science fiction",
+            "published_date": 1898,
             "title": "The War of the Worlds"
         },
         "3": {
             "author": "Edward Bulwer-Lytton",
             "category": "historical",
+            "published_date": 1834,
             "title": "Last Days of Pompeii"
         }
     }

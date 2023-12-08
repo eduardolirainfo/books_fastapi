@@ -3,69 +3,23 @@
         "1": {
             "author": "J. R. R. Tolkien",
             "description": "The Hobbit, or There and Back Again...",
-            "rating": 4,
+            "published_date": 1937,
+            "rating": 4.5,
             "title": "The Hobbit"
-        },
-        "12": {
-            "author": "zczc",
-            "description": "zczc",
-            "rating": 3,
-            "title": "zxczxcz"
-        },
-        "13": {
-            "author": "abc",
-            "description": "abc",
-            "rating": 5,
-            "title": "Teste x 123"
-        },
-        "14": {
-            "author": "Autor 1",
-            "description": "Descri\u00e7\u00e3o 1",
-            "published_date": 2021,
-            "rating": 5,
-            "title": "Livro 1"
         },
         "2": {
             "author": "J. R. R. Tolkien",
             "description": "The Lord of the Rings is an epic high...",
-            "rating": 4,
+            "published_date": 1954,
+            "rating": 4.7,
             "title": "The Lord of the Rings"
         },
         "3": {
             "author": "J. R. R. Tolkien",
             "description": "The Silmarillion is a collection of ...",
-            "rating": 4,
+            "published_date": 1977,
+            "rating": 4.6,
             "title": "The Silmarillion"
-        },
-        "4": {
-            "author": "Teste123",
-            "description": "Teste 123123123",
-            "rating": 4,
-            "title": "Teste123123123123"
-        },
-        "5": {
-            "author": "Teste2",
-            "description": "Teste2",
-            "rating": 3,
-            "title": "Teste2"
-        },
-        "6": {
-            "author": "Teste3",
-            "description": "Teste3",
-            "rating": 3,
-            "title": "Teste3"
-        },
-        "7": {
-            "author": "abc",
-            "description": "abc",
-            "rating": 5,
-            "title": "Teste4"
-        },
-        "8": {
-            "author": "zczc",
-            "description": "zczc",
-            "rating": 3,
-            "title": "aaa"
         }
     }
 }
