@@ -20,6 +20,13 @@
             "published_date": 1977,
             "rating": 4.6,
             "title": "The Silmarillion"
+        },
+        "4": {
+            "author": "Teste2",
+            "description": "Teste2",
+            "published_date": 2022,
+            "rating": 5,
+            "title": "Teste2"
         }
     }
 }
