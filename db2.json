@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "_default": {
         "1": {
@@ -57,4 +58,37 @@
             "title": "Teste4"
         }
     }
+=======
+{
+    "_default": {
+        "1": {
+            "author": "J. R. R. Tolkien",
+            "description": "The Hobbit, or There and Back Again...",
+            "published_date": 1937,
+            "rating": 4.5,
+            "title": "The Hobbit"
+        },
+        "2": {
+            "author": "J. R. R. Tolkien",
+            "description": "The Lord of the Rings is an epic high...",
+            "published_date": 1954,
+            "rating": 4.7,
+            "title": "The Lord of the Rings"
+        },
+        "3": {
+            "author": "J. R. R. Tolkien",
+            "description": "The Silmarillion is a collection of ...",
+            "published_date": 1977,
+            "rating": 4.6,
+            "title": "The Silmarillion"
+        },
+        "4": {
+            "author": "Teste2",
+            "description": "Teste2",
+            "published_date": 2022,
+            "rating": 5,
+            "title": "Teste2"
+        }
+    }
+>>>>>>> 292115e6c566942eceb643cb6ade117c58a19160
 }
